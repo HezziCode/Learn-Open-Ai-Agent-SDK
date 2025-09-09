@@ -65,8 +65,9 @@ agent = Agent(
     )
 
 async def main():
-    # max_turns is the number of times the agent will run by default it is 2
+    # max_turns is the number of times the agent will run by default it is 10
     res = await Runner.run(starting_agent=agent, max_turns=2, input="Give me 5 unusual and creative names for a coffee shop, make them funny and imaginative.", run_config=run_config)
     print(res.final_output)
+
 
 asyncio.run(main())
