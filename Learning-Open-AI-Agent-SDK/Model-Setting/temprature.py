@@ -16,15 +16,25 @@ agent = Agent(
         # Just like temperature, top_p is another parameter that controls randomness
         # but in a slightly different way.
 
-        # top_p controls word choice: near 0 → pick only the most likely word,
+        # top_p controls "nucleus sampling" and word choice: near 0 → pick only the most likely word,
         # near 1 (by_default) → more natural variety
 
-        top_p=1
+        top_p=1,
+
+
+        # top_k limits how many of the most likely words the model considers.
+        # 0 (default) → disabled, model considers all possible words.
+        # small values (e.g., 1–10) → very strict, only the most likely few words can be chosen.
+        # higher values (e.g., 40–100) → model can pick from a wider pool of words,
+        # making responses feel more diverse and less repetitive.
+
+        top_k=1
+
     )
     )
 
 async def main():
-    # max_turns is the number of times the agent will run by default it is 2
+    # max_turns is the number of times the agent will run by default it is 10
     res = await Runner.run(starting_agent=agent, max_turns=2, input="Give me 5 unusual and creative names for a coffee shop, make them funny and imaginative.", run_config=run_config)
     print(res.final_output)
 
