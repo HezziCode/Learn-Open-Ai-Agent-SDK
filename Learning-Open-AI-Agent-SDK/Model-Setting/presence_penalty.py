@@ -24,7 +24,7 @@ agent = Agent(
     )
 
 async def main():
-    # max_turns is the number of times the agent will run by default it is 2
+    # max_turns is the number of times the agent will run by default it is 10
     res = await Runner.run(starting_agent=agent, max_turns=2, input="Write a 200-word paragraph repeating 'dragon' many times.", run_config=run_config)
     print(res.final_output)
 
